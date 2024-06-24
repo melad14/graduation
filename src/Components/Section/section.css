@@ -1,0 +1,142 @@
+#services {
+    position: relative;
+    padding: 60px 0 30px 0;
+    text-align: center;
+}
+
+#services .single-service {
+    position: relative;
+    text-align: center;
+    font-weight: 400;
+    margin: 0 0 30px 0;
+    padding: 25px 30px 30px 30px;
+    border-radius: 6px;
+    box-shadow: 0 0 0 0px #fff inset, 0 0 3px 0 rgba(000, 000, 000, 0.3);
+}
+
+#services .single-service h4 {
+    color: #A52A2A;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 24px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+#services .single-service span {
+    font-size: 14px;
+}
+
+#services .single-service p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#services .single-service a {
+    display: inline-block;
+    margin: 10px 0 0 0;
+    padding: 7px 30px;
+    color: #ffffff;
+    background: #A52A2A;
+    border-radius: 30px;
+}
+
+#services .single-service:hover a {
+    background: #540000;
+}
+
+#services .single-service a:hover {
+    background: #A52A2A;
+}
+
+#services .single-service .icon {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: 0.5s;
+}
+
+#services .single-service .icon.icon-1 {
+    background-image: url(./img/icon-1.png);
+}
+
+#services .single-service:hover .icon.icon-1 {
+    background-image: url(./img/icon-1-hover.png);
+}
+
+#services .single-service .icon.icon-2 {
+    background-image: url(./img/icon-2.png);
+}
+
+#services .single-service:hover .icon.icon-2 {
+    background-image: url(./img/icon-2-hover.png);
+}
+
+#services .single-service .icon.icon-3 {
+    background-image: url(./img/icon-3.png);
+}
+
+#services .single-service:hover .icon.icon-3 {
+    background-image: url(./img/icon-3-hover.png);
+}
+
+#services .single-service .icon.icon-4 {
+    background-image: url(./img/icon-4.png);
+}
+
+#services .single-service:hover .icon.icon-4 {
+    background-image: url(./img/icon-4-hover.png);
+}
+
+#services .single-service .icon.icon-5 {
+    background-image: url(./img/icon-5.png);
+}
+
+#services .single-service:hover .icon.icon-5 {
+    background-image: url(./img/icon-5-hover.png);
+}
+
+#services .single-service .icon.icon-6 {
+    background-image: url(./img/icon-6.png);
+}
+
+#services .single-service:hover .icon.icon-6 {
+    background-image: url(./img/icon-6-hover.png);
+}
+
+#services .single-service .icon.icon-7 {
+    background-image: url(./img/icon-7.png);
+}
+
+#services .single-service:hover .icon.icon-7 {
+    background-image: url(./img/icon-7-hover.png);
+}
+
+#services .single-service .icon.icon-8 {
+    background-image: url(./img/icon-8.png);
+}
+
+#services .single-service:hover .icon.icon-8 {
+    background-image: url(./img/icon-8-hover.png);
+}
+
+#services .single-service .icon.icon-9 {
+    background-image: url(./img/icon-9.png);
+}
+
+#services .single-service:hover .icon.icon-9 {
+    background-image: url(./img/icon-9-hover.png);
+}
+
+#services .single-service .icon.icon-10 {
+    background-image: url(./img/icon-10.png);
+}
+
+#services .single-service:hover .icon.icon-10 {
+    background-image: url(./img/icon-10-hover.png);
+}

@@ -53,7 +53,13 @@ export default function Navbar() {
               <li onClick={removeNavbar} className="listItem">
                 <Link to="/medicaldata" className="link">Medical Data</Link>
               </li>
-             {userData.UserType==='patient'?
+              <li onClick={removeNavbar} className="listItem">
+                <Link to="/detect" className="link"> Detection </Link>
+              </li>
+              <li onClick={removeNavbar} className="listItem">
+                <Link to="/emergency" className="link"> Emergency </Link>
+              </li>
+             {userData.user.userType==='patient'?
                <li onClick={removeNavbar} className="listItem">
                <Link to="/account" className="link">PROFILE</Link>
              </li>

@@ -1,5 +1,5 @@
 :root {
-    --primaryColor  : #c10e21;
+    --primaryColor  : #540000;
     --secondaryColor:#f3dfdf;
     --textColor     : #a3a3a3;
     --greayColor    : #f4f4f4;
@@ -8,7 +8,6 @@
 }
 
 .header {
-    position       : fixed;
     display        : flex;
     align-items    : center;
     justify-content: space-between;
@@ -236,5 +235,4 @@
  
         }
      }
-
-}
+    }

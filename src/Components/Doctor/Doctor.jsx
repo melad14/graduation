@@ -1,181 +1,152 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
+import { useFormik } from 'formik';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { AuthContext } from '../../Context/AuthContext.jsx';
+
 
 export default function Doctor() {
-    const [create, setCreate] = useState(true);
-    const [patients, setPatients] = useState(false);
+    let { BASE_URL_DOCTOR}=useContext(AuthContext)
 
-    const [formData, setFormData] = useState({
-        UserName: '',
-        Email: '',
-        FullName: '',
-        Age: '',
-        Gender: '',
-        Image: '',
-        UserType: ''
-    });
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
+    let navigate = useNavigate();
+    const notify = (msg, type) => {
+        toast[type](msg)
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    const userToken = localStorage.getItem('userToken');
+    const [loading, setLoading] = useState(false)
+ 
 
-        const data = new FormData();
-        data.append('UserName', formData.UserName);
-        data.append('Email', formData.Email);
-        data.append('FullName', formData.FullName);
-        data.append('Age', formData.Age);
-        data.append('Gender', formData.Gender);
-        data.append('Image', formData.Image);
-        data.append('UserType', formData.UserType);
+    let addPatientFormik = useFormik({
+        initialValues: {
+            fullName: '',
+            email: '',
+            age: '',
+            gender: '',
+            userType: '',
+            password: ''
+        },
 
-        try {
-            const response = await axios.post('http://heartdiseaseproj.runasp.net/api/Doctor/AddNewPatient', data, {
+        onSubmit: async (values) => {
+            setLoading(true)
+
+
+            await axios.post(`${BASE_URL_DOCTOR}/AddNewPatient`, values, {
                 headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            });
-            console.log(response.data);
-            // Handle successful response
-        } catch (error) {
-            console.error('There was an error submitting the form!', error);
-            // Handle error response
+                    'Authorization': `Bearer ${userToken}`,
+
+                }
+            }).then((data) => {
+
+            
+                setLoading(false)
+                notify("Successfuly Added", "success")
+                navigate('/patients')
+            }).catch((error) => {
+
+                setLoading(false)
+                notify(error.response.data.error, "error")
+
+                console.log(error.response.data);
+
+
+            })
         }
-    };
+    })
+
+
+
+
+
 
     return (
         <>
             <div className='vh-100 d-flex flex-column justify-content-center align-items-center mb-5'>
                 <div className='container text-white d-flex justify-content-center'>
                     <button
-                        onClick={() => {
-                            setCreate(true);
-                            setPatients(false);
-                        }}
-                        className={create ? "btn btn-danger mx-2" : "btn btn-dark mx-2"}>
+
+                        className= "btn btn-danger mx-2">
                         Create Account
                     </button>
-                    <button
-                        onClick={() => {
-                            setCreate(false);
-                            setPatients(true);
-                        }}
-                        className={patients ? "btn btn-danger mx-2" : "btn btn-dark mx-2"}>
+                    <Link to='/patients'
+
+                        className= "btn btn-dark mx-2">
                         Your Patients
-                    </button>
+                    </Link >
                 </div>
 
                 <div className='w-50 h-50'>
-                    {create ? (
-                        <form className='w-100 my-3' onSubmit={handleSubmit}>
-                            <label className='my-1'>User Name</label>
-                            <input
-                                className='form form-control w-100'
-                                type="text"
-                                name="UserName"
-                                value={formData.UserName}
-                                onChange={handleChange}
-                            />
 
-                            <label className='my-1'>Email</label>
-                            <input
-                                className='form form-control w-100'
-                                type="text"
-                                name="Email"
-                                value={formData.Email}
-                                onChange={handleChange}
-                            />
+                    <form className='w-100 my-3 border  rounded-5 shadow-lg p-4' onSubmit={addPatientFormik.handleSubmit}>
 
-                            <label className='my-1'>Full Name</label>
-                            <input
-                                className='form form-control w-100'
-                                type="text"
-                                name="FullName"
-                                value={formData.FullName}
-                                onChange={handleChange}
-                            />
+                        <label className='my-1'>full name</label>
+                        <input
+                            className='form form-control w-100'
+                            type="text" p-4
+                            name="fullName"
+                            id='fullName'
+                            onBlur={addPatientFormik.handleBlur} value={addPatientFormik.values.fullName} onChange={addPatientFormik.handleChange}
+                        />
 
-                            <label className='my-1'>Age</label>
-                            <input
-                                className='form form-control w-100'
-                                type="text"
-                                name="Age"
-                                value={formData.Age}
-                                onChange={handleChange}
-                            />
+                        <label className='my-1'>email</label>
+                        <input
+                            className='form form-control w-100'
+                            type="text"
+                            name="email"
+                            id='email'
+                            onBlur={addPatientFormik.handleBlur} value={addPatientFormik.values.email} onChange={addPatientFormik.handleChange}
+                        />
+                        <label className='my-1'>password</label>
+                        <input
+                            className='form form-control w-100'
+                            type="password"
+                            name="password"
+                            id='password'
+                            onBlur={addPatientFormik.handleBlur} value={addPatientFormik.values.password} onChange={addPatientFormik.handleChange}
+                        />
 
-                            <label className='my-1'>Gender</label>
-                            <select
-                                className='form form-control'
-                                name="Gender"
-                                value={formData.Gender}
-                                onChange={handleChange}>
-                                <option value="none">Select An Option</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                            </select>
 
-                            <label className='my-1'>Image</label>
-                            <input
-                                className='form form-control w-100'
-                                type="file"
-                                name="Image"
-                                value={formData.Image}
-                                onChange={handleChange}
-                            />
+                        <label className='my-1'>age</label>
+                        <input
+                            className='form form-control w-100'
+                            type="number"
+                            name="age"
+                            id='age'
+                            onBlur={addPatientFormik.handleBlur} value={addPatientFormik.values.age} onChange={addPatientFormik.handleChange}
+                        />
 
-                            <label className='my-1'>User Type</label>
-                            <select
-                                className='form form-control'
-                                name="UserType"
-                                value={formData.UserType}
-                                onChange={handleChange}>
-                                <option value="none">Select An Option</option>
-                                <option value="doctor">Doctor</option>
-                                <option value="patient">Patient</option>
-                            </select>
+                        <label className='my-1'>gender</label>
+                        <select
+                            className='form form-control'
+                            name="gender"
+                            id='gender'
+                            onBlur={addPatientFormik.handleBlur} value={addPatientFormik.values.gender} onChange={addPatientFormik.handleChange}>
+                            <option value="none">Select An Option</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
 
-                            <button className='btn btn-danger my-2' type="submit">Submit</button>
-                        </form>
-                    ) : (
-                        <div className='row my-3'>
-                            <div className='col-md-12 border border-2'>
-                                <div className='row p-2'>
-                                    <div className='col-md-4 d-flex justify-content-center align-items-center'>
-                                        <h5>Name: fady ashraf</h5>
-                                    </div>
-                                    <div className='col-md-4 d-flex justify-content-center align-items-center'>
-                                        <h5>Male</h5>
-                                    </div>
-                                    <div className='col-md-4 d-flex justify-content-center align-items-center'>
-                                        <h5>Age: 60</h5>
-                                    </div>
-                                </div>
-                            </div>
+                        <label className='my-2'> type</label>
+                        <select
+                            className='form form-control'
+                            name="userType"
+                            id='userType'
+                            onBlur={addPatientFormik.handleBlur} value={addPatientFormik.values.userType} onChange={addPatientFormik.handleChange}>
+                            <option value="none">Select An Option</option>
+                            <option value="doctor">Doctor</option>
+                            <option value="patient">Patient</option>
+                        </select>
 
-                            <div className='col-md-12 border border-2 mt-2'>
-                                <div className='row p-2'>
-                                    <div className='col-md-4 d-flex justify-content-center align-items-center'>
-                                        <h5>Name: melad shehata</h5>
-                                    </div>
-                                    <div className='col-md-4 d-flex justify-content-center align-items-center'>
-                                        <h5>Male</h5>
-                                    </div>
-                                    <div className='col-md-4 d-flex justify-content-center align-items-center'>
-                                        <h5>Age: 60</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    )}
+
+                        <button disabled={!(addPatientFormik.isValid && addPatientFormik.dirty && !loading)} type='submit' className='btn bg-danger text-white my-2' >
+                            {loading ? <i className='fas fa-spinner fa-spin'></i> : 'Submit'}
+                        </button>
+
+                    </form>
+
                 </div>
-            </div>
+            </div >
         </>
     );
 }

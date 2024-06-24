@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 
 export default function Footer() {
     return <>
-<div className='sticky-bottom'>
-       <div className="container-fluid bg-dark text-white-50 footer pt-5 mt-5 ">
+<div style={{ marginTop: '200px' }}>
+       <div className="container-fluid bg-dark text-white-50 footer pt-5 mt-5 " >
             <div className="container ">
                 <div className="pb-4 mb-4" style={{ borderBottom: '1px solid rgba(226, 175, 24, 0.5)' }}>
                     <div className="row g-4">

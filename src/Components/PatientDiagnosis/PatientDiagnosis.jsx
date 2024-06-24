@@ -1,101 +1,89 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthContext.jsx';
+import Loading from '../Loading/Loding.jsx';
 
 export default function PatientDiagnosis() {
-  return <>
-  
-  <>
+  let { BASE_URL_ACCOUNT } = useContext(AuthContext)
+  const userToken = localStorage.getItem('userToken');
+  const [file, setFile] = useState(null);
+  let [loading, setLoading] = useState(false)
+  const [preview, setPreview] = useState(null);
+  const [result, setResult] = useState('');
 
-        <div className="container my-4 d-flex">
+  let navigate = useNavigate();
+  let idd;
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setFile(file);
 
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreview(reader.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setPreview(null);
+    }
+  };
 
-            <form action="" className='col-md-12 mx-4 border border-dark border-1 rounded-3 p-3 shadow shadow-4'>
-                <h1 className='primary'>Patient Diagnosis</h1>
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setLoading(true)
+    if (!file) {
+      alert("Please upload a file first!");
+      setLoading(false)
+      return;
+    }
 
-                <div className="row g-4 p-4 ">
-                <div className="col-md-4">
-                        <label className='text-muted' htmlFor="age" >Age</label>
-                        <input type="number" className='form form-control mt-2' name='age' />
-                    </div>
-                    <div className="col-md-4">
-                        <label className='text-muted' htmlFor="gender">Gender</label>
-                        <select className=' form-select mt-2' name="gender" id="">
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                        </select>
-                    </div>
-
-                  
-                    <div className="col-md-4">
-                        <label className='text-muted' htmlFor="diabets">Diabets</label>
-                        <select className=' form-select mt-2' name="diabets" id="">
-                            <option value="true">True</option>
-                            <option value="false">False</option>
-                        </select>
-                    </div>
-
-                    <div className="col-md-4">
-                        <label className='text-muted' htmlFor="smooking">Smooking</label>
-                        <select className=' form-select mt-2' name="smooking" id="">
-                            <option value="true">True</option>
-                            <option value="false">False</option>
-                        </select>
-                    </div>
-                    <div className="col-md-4">
-                        <label className='text-muted' htmlFor="blood" >Blood Pressure</label>
-                        <select className=' form-select mt-2' name="blood" id="">
-                            <option value="low">Low</option>
-                            <option value="moderate">Moderate</option>
-                            <option value="high">High</option>
-                        </select>
-                    </div>
-                    <div className="col-md-4">
-                        <label className='text-muted' htmlFor="chest">Chest Pain</label>
-                        <select className=' form-select mt-2' name="chest" id="">
-                            <option value="true">True</option>
-                            <option value="false">False</option>
-                        </select>
-                    </div>
-                    <div className="col-md-4">
-                        <label className='text-muted' htmlFor="breathe">Shortness Of Breathe</label>
-                        <select className=' form-select mt-2' name="breathe" id="">
-                            <option value="true">True</option>
-                            <option value="false">False</option>
-                        </select>
-                    </div>
-                    <div className="col-md-4">
-                        <label className='text-muted' htmlFor="cholesterol" >Cholesterol Level</label>
-                        <select className=' form-select mt-2' name="cholesterol" id="">
-                            <option value="low">Low</option>
-                            <option value="moderate">Moderate</option>
-                            <option value="high">High</option>
-                        </select>
-                    </div>
-                    <div className="col-md-4">
-                        <label className='text-muted' htmlFor="familyhistory" > Family History</label>
-                        <input type="string" className='form form-control mt-2' name='familyhistory' />
-                    </div>
-                    <div className="col-md-4">
-                        <label className='text-muted' htmlFor="bmi" > BMI</label>
-                        <input type="number" className='form form-control mt-2' name='bmi' />
-                    </div>
-                    <div className="col-md-4">
-                        <label className='text-muted' htmlFor="physicalact" >Physical Act</label>
-                        <select className=' form-select mt-2' name="physicalact" id="">
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                      
-                        </select>
-                    </div>
-                    <div className="col-md-4">
-                        <label className='text-muted' htmlFor="sleeptime" > Sleep Time</label>
-                        <input type="number" className='form form-control mt-2' name='sleeptime' />
-                    </div>
-                </div>
-
-            </form>
+    const formData = new FormData();
+    formData.append('file', file);
 
 
+    try {
+      const response1 = await axios.post(`${BASE_URL_ACCOUNT}/Detection/AddDetection`, formData, {
+        headers: {
+          'Authorization': `Bearer ${userToken}`,
+        },
+      });
+      console.log(response1);
+
+      idd = response1.data.data._id
+    } catch (error) {
+      console.error('Error submitting endpoint', error);
+    }
+    try {
+      const response2 = await axios.post('http://4.227.145.82:9000/predict', formData);
+      setLoading(false)
+
+
+      const prediction = response2.data.result
+      navigate('/resultD', { state: { prediction, predictId: idd } });
+    } catch (error) {
+      setLoading(false)
+      console.log('Error submitting the form', error);
+    }
+  };
+  return (<>
+    {loading ? <Loading /> : null}
+    <div className="container my-4 d-flex flex-column align-items-center">
+      <form onSubmit={handleSubmit} className='col-md-6 mx-4 rounded-3 p-3 shadow shadow-4'>
+        <h1 className='primary'>Patient Diagnosis</h1>
+        <div>
+          <input type="file" className='form form-control mt-2' onChange={handleFileChange} placeholder='Upload image' />
         </div>
-    </>
+        {preview && (
+          <div className="mt-3">
+            <img src={preview} alt="Selected" style={{ maxHeight: '300px', width: '100%' }} className="img-fluid" />
+          </div>
+        )}
+        <button type="submit" className='my-3 btn btn-outline-danger'>detect</button>
+      </form>
+      {result && <div>Result: {result}</div>}
+    </div>
   </>
+
+  );
 }

@@ -8,7 +8,7 @@
 }
 
 .home {
-  padding-top: 8rem;
+  padding-top: 3rem;
 }
 
 .secContainer {
@@ -79,7 +79,7 @@
 }
 @media screen and (min-width: 770px) {
   .home {
-    padding-top: 10rem;
+    padding-top: 3rem;
   }
   .home .secContainer {
     gap: 2.5rem;
@@ -96,7 +96,7 @@
 }
 @media screen and (min-width: 996px) {
   .home {
-    padding-top: 12rem;
+    padding-top: 3rem;
   }
   .home .secContainer {
     gap: 3rem;

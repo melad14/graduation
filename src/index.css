@@ -54,3 +54,139 @@ color: var(--primaryColor);
 .profile{
   width: 15%;
 }
+#loading {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 9999;
+  color: var(--lightBgColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  font-weight: bolder;
+  background-color: white;
+}
+
+.overlay {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .8);
+  transition: all .3s;
+}
+/* Add this in your CSS file */
+.card {
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.card label {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+
+/**********************************/
+.team-6 {
+  margin-bottom: 30px;
+}
+
+.team-6 .team-img {
+  position: relative;
+  font-size: 0;
+  text-align: center;
+  border-radius: 100%;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.team-6 .team-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 100%;
+  border: 15px solid #f3f4fa;
+  transition: all .3s;
+}
+
+.team-6:hover .team-img img {
+  border: 0px solid #f3f4fa;
+}
+
+.team-6 .team-content {
+  text-align: center;
+}
+
+.team-6 .team-content h2 {
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+
+.team-6 .team-content h3 {
+  font-size: 16px;
+  font-weight: 300;
+  margin-bottom:30px;
+}
+
+.team-6 .team-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0;
+}
+
+.team-6 .team-social a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+  padding: 12px 0 10px 0;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 100%;
+  transition: all .3s;
+}
+
+.team-6 .team-social a.social-tw {
+  background: #00acee;
+}
+
+.team-6 .team-social a.social-fb {
+  background: #3b5998;
+}
+
+.team-6 .team-social a.social-li {
+  background: #0e76a8;
+}
+
+.team-6 .team-social a.social-in {
+  background: #3f729b;
+}
+
+.team-6 .team-social a.social-yt {
+  background: #c4302b;
+}
+
+.team-6 .team-social a:last-child {
+  margin-right: 0;
+}
+
+.team-6 .team-social a:hover {
+  background: #222222;
+}
