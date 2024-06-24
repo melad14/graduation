@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.css": "/graduation/static/css/main.a64d48ac.css",
+    "main.js": "/graduation/static/js/main.2edd3658.js",
+    "static/js/453.192b04f3.chunk.js": "/graduation/static/js/453.192b04f3.chunk.js",
+    "static/media/rbbb.png": "/graduation/static/media/rbbb.e0b9fde1171ab92c545c.png",
+    "static/media/lbbb.png": "/graduation/static/media/lbbb.d60999b3c0bda1ceab06.png",
+    "static/media/pac.png": "/graduation/static/media/pac.d6039d89e66072d50678.png",
+    "static/media/pvc.png": "/graduation/static/media/pvc.e80400f06f7055813e5a.png",
+    "static/media/vf.png": "/graduation/static/media/vf.b885c3f5087820273f8f.png",
+    "static/media/fa-solid-900.ttf": "/graduation/static/media/fa-solid-900.45a265d0f07b31cde85f.ttf",
+    "static/media/human-heart-design.jpg": "/graduation/static/media/human-heart-design.57e3ebdccfa0ab120c1c.jpg",
+    "static/media/normal.png": "/graduation/static/media/normal.69c36341ca9fa56ef167.png",
+    "static/media/WhatsApp Image 2024-06-24 at 18.58.46_1fbbc468.jpg": "/graduation/static/media/WhatsApp Image 2024-06-24 at 18.58.46_1fbbc468.b451c2e818e013709c29.jpg",
+    "static/media/female-doctor-with-patient-who-is-complaining-chest-pain-during-coronavirus-epidemic.jpg": "/graduation/static/media/female-doctor-with-patient-who-is-complaining-chest-pain-during-coronavirus-epidemic.284b76915ac59f917dc8.jpg",
+    "static/media/WhatsApp Image 2024-06-23 at 18.22.58_15779590.jpg": "/graduation/static/media/WhatsApp Image 2024-06-23 at 18.22.58_15779590.9344aae69d5f0c05d80f.jpg",
+    "static/media/fa-brands-400.ttf": "/graduation/static/media/fa-brands-400.6205fd00fb1b573e9f0f.ttf",
+    "static/media/fa-solid-900.woff2": "/graduation/static/media/fa-solid-900.fb8184add5a3101ad0a3.woff2",
+    "static/media/WhatsApp Image 2024-06-23 at 18.03.52_47a9349f.jpg": "/graduation/static/media/WhatsApp Image 2024-06-23 at 18.03.52_47a9349f.3cebec48fdd69b3c614c.jpg",
+    "static/media/WhatsApp Image 2024-06-23 at 17.52.48_061574e0.jpg": "/graduation/static/media/WhatsApp Image 2024-06-23 at 17.52.48_061574e0.0a4392f679c11162136e.jpg",
+    "static/media/fa-brands-400.woff2": "/graduation/static/media/fa-brands-400.8d3cabfc66809162fb4d.woff2",
+    "static/media/WhatsApp Image 2024-06-24 at 18.12.15_4400a599.jpg": "/graduation/static/media/WhatsApp Image 2024-06-24 at 18.12.15_4400a599.5ad807de1ba89098d647.jpg",
+    "static/media/WhatsApp Image 2024-06-23 at 18.39.03_b0dec641.jpg": "/graduation/static/media/WhatsApp Image 2024-06-23 at 18.39.03_b0dec641.9db31385b416f0a09d53.jpg",
+    "static/media/Wavy_Med-03_Single-05.jpg": "/graduation/static/media/Wavy_Med-03_Single-05.b0fd9b593c51955c6178.jpg",
+    "static/media/fa-regular-400.ttf": "/graduation/static/media/fa-regular-400.adc51aab4d771ab65f81.ttf",
+    "static/media/WhatsApp Image 2024-06-23 at 22.34.10_18c9963a.jpg": "/graduation/static/media/WhatsApp Image 2024-06-23 at 22.34.10_18c9963a.b8ed8213ada948885e0c.jpg",
+    "static/media/WhatsApp Image 2024-06-23 at 18.24.45_a1b716a5.jpg": "/graduation/static/media/WhatsApp Image 2024-06-23 at 18.24.45_a1b716a5.5e82aff7c00c1eb4e30e.jpg",
+    "static/media/fa-regular-400.woff2": "/graduation/static/media/fa-regular-400.e931bc0d14f5bbb1da22.woff2",
+    "static/media/dangerous_10636124.png": "/graduation/static/media/dangerous_10636124.c41ce2417c7a7ab76ff0.png",
+    "static/media/fa-v4compatibility.ttf": "/graduation/static/media/fa-v4compatibility.2eb7b3ef25042305f3ff.ttf",
+    "static/media/fa-v4compatibility.woff2": "/graduation/static/media/fa-v4compatibility.b3049b13a93f07e026fc.woff2",
+    "static/media/Capture.PNG": "/graduation/static/media/Capture.81cdf7c11343d254fd9f.PNG",
+    "index.html": "/graduation/index.html",
+    "main.a64d48ac.css.map": "/graduation/static/css/main.a64d48ac.css.map",
+    "main.2edd3658.js.map": "/graduation/static/js/main.2edd3658.js.map",
+    "453.192b04f3.chunk.js.map": "/graduation/static/js/453.192b04f3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a64d48ac.css",
+    "static/js/main.2edd3658.js"
+  ]
+}
