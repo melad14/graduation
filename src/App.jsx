@@ -42,6 +42,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<ProtectedRoute><Home /></ProtectedRoute>} />
           <Route path="HeartProject" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+          <Route path="graduation" element={<ProtectedRoute><Home /></ProtectedRoute>} />
           <Route path="account" element={<ProtectedRoute><Account /></ProtectedRoute>} />
           <Route path="about" element={<ProtectedRoute><About /></ProtectedRoute>} />
           <Route path="medicaldata" element={<ProtectedRoute><MedicalData /></ProtectedRoute>} />
